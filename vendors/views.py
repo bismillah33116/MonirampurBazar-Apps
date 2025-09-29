@@ -20,7 +20,6 @@ class VendorRequiredMixin:
     def dispatch(self, request, *args, **kwargs):
         return self.request.user.is_authenticated and self.request.user.is_vendor
 
-        
 class VendorDashboardView(LoginRequiredMixin, VendorRequiredMixin, TemplateView):
     template_name = "vendors/dashboard.html"
 
@@ -31,3 +30,4 @@ class VendorDashboardView(LoginRequiredMixin, VendorRequiredMixin, TemplateView)
         # Vendor-এর অর্ডার তালিকা এখানে যোগ করতে পারেন
         context["orders"] = []  
         return context
+

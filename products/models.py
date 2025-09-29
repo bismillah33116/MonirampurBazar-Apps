@@ -15,6 +15,7 @@ class Product(models.Model):
     stock = models.PositiveIntegerField(default=0)
     slug = models.SlugField(unique=True)
     vendor = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name="products")
     created_at = models.DateTimeField(auto_now_add=True)
     featured = models.BooleanField(default=False)
     images = models.ImageField(upload_to='products/', blank=True, null=True)
@@ -26,7 +27,3 @@ class Product(models.Model):
         return self.title
 
 
-
-class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='product_images/')

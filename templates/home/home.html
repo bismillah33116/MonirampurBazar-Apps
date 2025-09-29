@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Monirampur Bazar - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="flex justify-center items-center h-screen">
+
+    <!-- Left Side (Brand Info) -->
+    <div class="w-1/2 hidden md:flex flex-col justify-center pr-10">
+      <h1 class="text-5xl font-bold text-green-600 mb-4">Monirampur Bazar</h1>
+      <p class="text-xl text-gray-700">আপনার এলাকার অনলাইন মার্কেটপ্লেস — সংযোগ করুন, কিনুন এবং বিক্রি করুন সহজে।</p>
+    </div>
+
+    <!-- Right Side (Login Form) -->
+    <div class="w-full md:w-1/3 bg-white p-6 rounded-lg shadow-md">
+      <form method="post" action="{% url 'accounts:login' %}" class="space-y-4">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="ইমেইল বা মোবাইল নম্বর" class="w-full p-3 border rounded-md">
+        <input type="password" name="password" placeholder="পাসওয়ার্ড" class="w-full p-3 border rounded-md">
+        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-md font-semibold hover:bg-green-700">
+          লগইন
+        </button>
+      </form>
+
+      <div class="text-center my-4">
+        
+      </div>
+
+      <hr class="my-4">
+
+      <div class="text-center">
+       
+          নতুন অ্যাকাউন্ট তৈরি করুন
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

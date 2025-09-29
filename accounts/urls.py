@@ -1,15 +1,13 @@
 from django.urls import path
+from .views import RegisterView  # <-- Import missing
 from django.contrib.auth import views as auth_views
-from . import views
+
 
 app_name = "accounts"
 
 urlpatterns = [
     # Auth
-    path("signup/", views.SignUpView.as_view(), name="signup"),
+    path("register/", RegisterView.as_view(), name="register"),
     path("login/", auth_views.LoginView.as_view(template_name="accounts/login.html"), name="login"),
-    path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
-
-    # Profile
-    path("dashboard/", views.DashboardView.as_view(), name="dashboard"),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]

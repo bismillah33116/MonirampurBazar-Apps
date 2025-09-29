@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'products',
     'vendors',
     'core',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'manirampur_bazar.urls'
 
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 TEMPLATES = [
     {
