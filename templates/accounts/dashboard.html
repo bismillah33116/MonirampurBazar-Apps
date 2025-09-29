@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white p-6 rounded-2xl shadow">
+  <h2 class="text-2xl font-bold mb-4">Welcome, {{ user.username }} 👋</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="p-4 border rounded-lg">
+      <h3 class="font-semibold mb-2">My Orders</h3>
+      {% if user_orders %}
+        <ul>
+          {% for order in user_orders %}
+            <li>Order #{{ order.id }} - {{ order.status }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-gray-500">No orders yet.</p>
+      {% endif %}
+    </div>
+
+    {% if vendor %}
+    <div class="p-4 border rounded-lg">
+      <h3 class="font-semibold mb-2">Vendor Dashboard</h3>
+      <p>Shop: {{ vendor.name }}</p>
+      <a href="{% url 'vendors:dashboard' %}" class="text-blue-600">Go to Vendor Dashboard</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

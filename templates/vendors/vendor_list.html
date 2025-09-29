@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto py-6">
+  <h2 class="text-2xl font-bold mb-4">All Vendors</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for vendor in vendors %}
+    <div class="border rounded-lg p-4 shadow hover:shadow-lg transition">
+      <h3 class="font-semibold text-lg">{{ vendor.profile.shop_name }}</h3>
+      <p>{{ vendor.profile.address }}</p>
+      <a href="{% url 'vendors:vendor_detail' vendor.slug %}" class="text-blue-600 mt-2 inline-block">Visit Shop</a>
+    </div>
+    {% empty %}
+    <p>No vendors found.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
