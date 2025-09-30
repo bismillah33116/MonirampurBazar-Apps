@@ -1,12 +1,29 @@
+
 {% extends "base.html" %}
+{% block title %}Shops{% endblock %}
+
 {% block content %}
-<div class="max-w-md mx-auto bg-white p-6 rounded-2xl shadow">
-  <h2 class="text-2xl font-bold mb-4">Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Login</button>
-  </form>
-  <p class="mt-4 text-sm">Don’t have an account? <a href="{% url 'accounts:signup' %}" class="text-green-600">Sign Up</a></p>
+<div class="max-w-6xl mx-auto py-10">
+  <h1 class="text-3xl font-bold mb-8 text-center">Our Shops</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for vendor in vendors %}
+    <div class="bg-white border rounded-lg shadow hover:shadow-lg transition duration-300">
+      <div class="p-4">
+        <h2 class="text-xl font-semibold mb-2">{{ vendor.shop_name }}</h2>
+        <p class="text-gray-600 mb-4">{{ vendor.address|default:"No address provided" }}</p>
+        <a href="{% url 'vendors:vendor_detail' vendor.id %}" 
+           class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+          Visit Shop
+        </a>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center text-gray-500 col-span-3">No shops available yet.</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
+
+
+

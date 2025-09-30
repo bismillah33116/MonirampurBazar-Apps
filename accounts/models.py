@@ -7,6 +7,7 @@ from django.conf import settings
 USER_ROLES = (
     ("customer", "Customer"),
     ("vendor", "Vendor"),
+    ("admin","admin"),
 )
 
     
